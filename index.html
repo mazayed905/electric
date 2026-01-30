@@ -18,7 +18,6 @@
       --bad:#ef4444;
       --shadow:0 6px 18px rgba(15,23,42,.08);
       --radius:16px;
-      --radius-sm:12px;
       --gap:14px;
       --tap:52px;
     }
@@ -33,7 +32,6 @@
       -webkit-text-size-adjust:100%;
     }
 
-    /* iOS safe areas */
     .safe{
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
@@ -141,7 +139,7 @@
       cursor:pointer;
       user-select:none;
       -webkit-tap-highlight-color: transparent;
-      font-weight:800;
+      font-weight:900;
       color:var(--text);
       box-shadow: 0 2px 10px rgba(15,23,42,.04);
       display:inline-flex;
@@ -158,7 +156,7 @@
       background: linear-gradient(135deg, rgba(239,68,68,.10), rgba(255,255,255,.9));
     }
     .btn:active{ transform: scale(.99); }
-    .btn small{ color:var(--muted); font-weight:700; }
+    .btn small{ color:var(--muted); font-weight:800; }
 
     /* Layout */
     .wrap{
@@ -197,13 +195,13 @@
     .card .hd h2{
       margin:0;
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 1000;
       letter-spacing: .2px;
     }
     .card .hd .hint{
       font-size: 12px;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
     }
     .card .bd{
       padding: 14px;
@@ -218,7 +216,7 @@
     .field label{
       font-size: 12px;
       color: var(--muted);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .row{
@@ -265,11 +263,12 @@
       min-height: var(--tap);
       background:#fff;
     }
-    .toggle b{ font-size: 14px; }
+    .toggle b{ font-size: 14px; font-weight:1000; }
     .toggle span{
       font-size: 12px;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
+      line-height:1.3;
     }
     .switch{
       width: 54px;
@@ -280,6 +279,7 @@
       flex:0 0 auto;
       cursor:pointer;
       border:1px solid var(--border);
+      -webkit-tap-highlight-color: transparent;
     }
     .switch::after{
       content:"";
@@ -291,44 +291,54 @@
       border-radius: 999px;
       background:#fff;
       box-shadow: 0 4px 10px rgba(15,23,42,.18);
-      transition: left .18s ease, background .18s ease;
+      transition: left .18s ease;
     }
     .switch.on{
       background: rgba(22,163,74,.22);
       border-color: rgba(22,163,74,.30);
     }
     .switch.on::after{ left: 24px; }
+    .switch.disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
 
     .msg{
       font-size: 12px;
       margin-top: 4px;
       color: var(--bad);
-      font-weight: 800;
+      font-weight: 900;
       display:none;
     }
     .msg.show{ display:block; }
+
     .note{
       font-size: 12px;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
       margin-top: 6px;
       line-height: 1.6;
+      white-space: pre-line;
     }
+
     .soft{
       padding:10px 12px;
       border-radius: 14px;
       background: rgba(37,99,235,.06);
       border:1px dashed rgba(37,99,235,.25);
       color: #1e3a8a;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
-      line-height:1.65;
+      line-height:1.7;
+      white-space: pre-line;
     }
+
     details.adv{
       border:1px solid var(--border);
       border-radius: var(--radius);
       background:#fff;
       overflow:hidden;
+      margin-top: 10px;
     }
     details.adv summary{
       list-style:none;
@@ -338,14 +348,14 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      font-weight: 900;
+      font-weight: 1000;
       color: var(--text);
       -webkit-tap-highlight-color: transparent;
     }
     details.adv summary::-webkit-details-marker{ display:none; }
     details.adv summary span{
       color: var(--muted);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
     }
     details.adv .inside{
@@ -367,7 +377,7 @@
       border-radius: var(--radius);
       background: linear-gradient(180deg, rgba(15,23,42,.02), rgba(255,255,255,.9));
       padding: 12px 12px;
-      min-height: 86px;
+      min-height: 90px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -378,22 +388,25 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      font-weight: 900;
+      font-weight: 1000;
       font-size: 12px;
       color: var(--muted);
     }
     .res .v{
-      font-size: 22px;
-      font-weight: 1000;
+      font-size: 21px;
+      font-weight: 1100;
       letter-spacing: .2px;
+      line-height:1.1;
     }
     .res .s{
       font-size: 12px;
       color: var(--muted);
-      font-weight: 800;
-      line-height: 1.45;
+      font-weight: 900;
+      line-height: 1.5;
       min-height: 18px;
+      white-space: pre-line;
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
@@ -403,7 +416,7 @@
       border: 1px solid var(--border);
       background:#fff;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 1000;
       color: var(--text);
       white-space:nowrap;
     }
@@ -435,17 +448,14 @@
     th{
       font-size: 12px;
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 1000;
       background: rgba(15,23,42,.03);
     }
     tr:last-child td{ border-bottom:none; }
-    .muted{ color:var(--muted); font-weight:800; }
+    .muted{ color:var(--muted); font-weight:900; }
 
-    /* SVG card */
-    .svg-wrap{
-      width:100%;
-      overflow:hidden;
-    }
+    /* SVG */
+    .svg-wrap{ width:100%; overflow:hidden; }
     .svg-wrap svg{
       width:100%;
       height:auto;
@@ -454,39 +464,118 @@
       border:1px solid var(--border);
       border-radius: var(--radius);
     }
+
     .footer-note{
       margin-top:10px;
       font-size: 12px;
       color: var(--muted);
-      font-weight: 800;
-      line-height: 1.6;
+      font-weight: 900;
+      line-height: 1.7;
       white-space: pre-line;
     }
 
-    /* Footer credit */
-    .credit{
-      max-width:1100px;
-      margin: 0 auto 18px;
-      padding: 10px 14px 22px;
-      text-align:center;
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .2px;
+    /* Simulation panel */
+    .sim{
+      margin-top: 12px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#fff;
     }
-    .credit .chip{
-      display:inline-flex;
+    .sim .sim-hd{
+      padding: 12px 12px 10px;
+      border-bottom:1px solid var(--border);
+      display:flex;
       align-items:center;
-      gap:8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(15,23,42,.03);
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+      justify-content:space-between;
+      gap:10px;
     }
-    .credit .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    .sim .sim-hd b{
+      font-size: 13px;
+      font-weight: 1100;
+    }
+    .sim .sim-hd .badge{ font-size: 11.5px; padding: 6px 10px; }
+    .sim .sim-bd{ padding: 12px; }
+
+    .sim-grid{
+      display:grid;
+      gap:10px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:620px){
+      .sim-grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .sim-controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+    }
+    .btn.small{
+      min-height: 40px;
+      padding: 8px 12px;
+      font-size: 13px;
+      border-radius: 999px;
+    }
+    .btn.ghost{
+      background:#fff;
+      border:1px dashed rgba(15,23,42,.22);
+      color: var(--text);
+    }
+
+    .lamps{
+      display:grid;
+      gap:10px;
+      grid-template-columns: 1fr;
+      margin-top: 10px;
+    }
+    @media(min-width:620px){
+      .lamps{ grid-template-columns: 1fr 1fr; }
+    }
+    .lamp{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:10px 12px;
+      background: linear-gradient(180deg, rgba(15,23,42,.02), rgba(255,255,255,.95));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height: 58px;
+    }
+    .lamp .left{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .lamp .left b{ font-size: 13px; font-weight: 1100; }
+    .lamp .left span{ font-size: 12px; font-weight:900; color: var(--muted); }
+    .dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #cbd5e1;
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,.06), 0 6px 12px rgba(15,23,42,.12);
+      flex:0 0 auto;
+    }
+    .dot.on{ background: rgba(22,163,74,.95); }
+    .dot.warn{ background: rgba(245,158,11,.95); }
+    .dot.bad{ background: rgba(239,68,68,.95); }
+
+    .sim-readout{
+      margin-top: 10px;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(37,99,235,.06);
+      border-style: dashed;
+      border-color: rgba(37,99,235,.25);
+      color:#1e3a8a;
+      font-weight: 1000;
+      font-size: 12px;
+      line-height: 1.7;
+      white-space: pre-line;
     }
 
     /* Toast */
@@ -500,7 +589,7 @@
       color:#fff;
       padding: 10px 12px;
       border-radius: 999px;
-      font-weight: 900;
+      font-weight: 1000;
       font-size: 12px;
       box-shadow: 0 12px 28px rgba(15,23,42,.22);
       opacity:0;
@@ -515,24 +604,44 @@
     .section{ display:none; }
     .section.active{ display:block; }
 
+    /* Footer */
+    .credit{
+      max-width:1100px;
+      margin: 0 auto 18px;
+      padding: 10px 14px 22px;
+      text-align:center;
+      color: var(--muted);
+      font-weight: 1000;
+      font-size: 12px;
+      letter-spacing: .2px;
+    }
+    .credit .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.03);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+    }
+    .credit .dot2{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
     /* Print */
     @media print{
       :root{ --bg:#ffffff; --shadow:none; }
       body{ background:#fff; }
-      .topbar, .actions, .step-btn, .btn, details.adv summary, .toast{ display:none !important; }
+      .topbar, .actions, details.adv summary, .toast, .sim-controls button, .switch{ display:none !important; }
       .wrap{ max-width:100%; padding:0; }
       .card{ box-shadow:none; border:1px solid #d1d5db; border-radius: 10px; break-inside:avoid; }
       .card .hd{ background:#f3f4f6; }
-      .res{ break-inside:avoid; }
-      .table{ break-inside:avoid; }
-      .svg-wrap svg{ break-inside:avoid; }
+      .res, .table, .svg-wrap svg, .sim{ break-inside:avoid; }
       .credit{ display:block !important; margin-top: 10mm; }
       .credit .chip{ border: 1px solid #d1d5db; box-shadow:none; }
-      a{ text-decoration:none; color:inherit; }
-      @page{
-        size: A4;
-        margin: 12mm;
-      }
+      @page{ size: A4; margin: 12mm; }
     }
   </style>
 </head>
@@ -705,8 +814,41 @@
                   </div>
                 </div>
 
+                <div class="row two">
+                  <div class="field">
+                    <label>Phase Failure Protection</label>
+                    <div class="toggle">
+                      <div>
+                        <b>Phase Failure</b>
+                        <span>مرحّل فقد/عدم توازن فاز (3PH فقط)</span>
+                      </div>
+                      <div class="switch" id="togPF" role="switch" aria-checked="true" tabindex="0"></div>
+                    </div>
+                    <div class="note" id="pfNote"></div>
+                  </div>
+
+                  <div class="field">
+                    <label>Star–Delta Starter (Complete Protection)</label>
+                    <div class="soft" id="sdInfo">
+Star–Delta Starter (Complete Protection)
+Power Side Sequence
+1) Start: KM1 + KM2 ON (Star)
+2) After Timer: KM2 OFF → (Dead time) → KM3 ON (Delta)
+
+Interlock Logic
+- KM2 ↔ KM3 Electrical interlock + Mechanical interlock (موصى به)
+
+Overload Logic
+- OL Trip يفتح دائرة ملفات الكونتاكتورات ويستلزم Reset
+
+Star–Delta Starter
+with MCCB + Phase Failure + Overload
+                    </div>
+                  </div>
+                </div>
+
                 <div class="soft" id="advInfo">
-                  ملاحظة: Derating Factor يُستخدم لتعديل سعة الكابل المقترحة (Iallow = capacity × factor). لا تُقبل القيم السالبة.
+ملاحظة: Derating Factor يُستخدم لتعديل سعة الكابل المقترحة (Iallow = capacity × factor). لا تُقبل القيم السالبة.
                 </div>
               </div>
             </details>
@@ -718,12 +860,88 @@
         <div class="card">
           <div class="hd">
             <h2>النتائج</h2>
-            <div class="hint" id="statusBadgeWrap">
+            <div class="hint">
               <span class="badge" id="statusBadge">جاهز</span>
             </div>
           </div>
           <div class="bd">
             <div class="results" id="resultsGrid"></div>
+
+            <!-- Simulation (Star-Delta) -->
+            <div class="sim" id="simWrap" style="display:none;">
+              <div class="sim-hd">
+                <b>محاكاة فعلية — Star–Delta (KM1/KM2/KM3)</b>
+                <span class="badge" id="simStateBadge">IDLE</span>
+              </div>
+              <div class="sim-bd">
+                <div class="sim-grid">
+                  <div class="field" style="margin:0;">
+                    <label>إعدادات Timer</label>
+                    <div class="row two" style="gap:10px;">
+                      <div class="field" style="margin:0;">
+                        <label for="sdStarTime" style="margin:0;">Star Time (s)</label>
+                        <input id="sdStarTime" type="number" inputmode="decimal" min="0.1" step="0.1" value="8" />
+                        <div class="msg" id="err-sdStarTime"></div>
+                      </div>
+                      <div class="field" style="margin:0;">
+                        <label for="sdDeadTime" style="margin:0;">Dead Time (s)</label>
+                        <input id="sdDeadTime" type="number" inputmode="decimal" min="0" step="0.05" value="0.2" />
+                        <div class="msg" id="err-sdDeadTime"></div>
+                      </div>
+                    </div>
+                    <div class="note" id="simAvailNote"></div>
+                  </div>
+
+                  <div>
+                    <div class="field" style="margin:0;">
+                      <label>تشغيل/إيقاف + أعطال</label>
+                      <div class="sim-controls">
+                        <button class="btn small primary" id="btnSimStart" type="button">Start</button>
+                        <button class="btn small" id="btnSimStop" type="button">Stop</button>
+                        <button class="btn small danger" id="btnTripOL" type="button">Trip OL</button>
+                        <button class="btn small danger" id="btnTripPF" type="button">Simulate Phase Fail</button>
+                        <button class="btn small ghost" id="btnResetTrips" type="button">Reset (OL/PF)</button>
+                      </div>
+                      <div class="note" id="simFaultNote"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lamps">
+                  <div class="lamp">
+                    <div class="left">
+                      <b>KM1 (Line)</b>
+                      <span id="km1Txt">OFF</span>
+                    </div>
+                    <span class="dot" id="km1Dot" aria-hidden="true"></span>
+                  </div>
+                  <div class="lamp">
+                    <div class="left">
+                      <b>KM2 (Star)</b>
+                      <span id="km2Txt">OFF</span>
+                    </div>
+                    <span class="dot" id="km2Dot" aria-hidden="true"></span>
+                  </div>
+                  <div class="lamp">
+                    <div class="left">
+                      <b>KM3 (Delta)</b>
+                      <span id="km3Txt">OFF</span>
+                    </div>
+                    <span class="dot" id="km3Dot" aria-hidden="true"></span>
+                  </div>
+                  <div class="lamp">
+                    <div class="left">
+                      <b>Protections</b>
+                      <span id="protTxt">OK</span>
+                    </div>
+                    <span class="dot" id="protDot" aria-hidden="true"></span>
+                  </div>
+                </div>
+
+                <div class="sim-readout" id="simReadout"></div>
+              </div>
+            </div>
+
             <div class="footer-note" id="calcNotes"></div>
           </div>
         </div>
@@ -735,7 +953,7 @@
       <div class="card">
         <div class="hd">
           <h2>Materials (BOM)</h2>
-          <div class="hint">يتكوّن تلقائيًا حسب الخيارات والنتائج</div>
+          <div class="hint">يتكوّن تلقائيًا حسب الخيارات والنتائج والحمايات</div>
         </div>
         <div class="bd">
           <div class="table">
@@ -761,7 +979,7 @@
       <div class="card">
         <div class="hd">
           <h2>Single Line Diagram (SLD)</h2>
-          <div class="hint">رسم SVG مبسط مع القيم</div>
+          <div class="hint">رسم SVG مبسط + قيم + Star–Delta عند الاختيار</div>
         </div>
         <div class="bd">
           <div class="svg-wrap" id="sldWrap"></div>
@@ -771,11 +989,10 @@
     </section>
   </main>
 
-  <!-- Footer Credit -->
   <footer class="credit" aria-label="Credit">
     <div class="chip">
-      <span class="dot" aria-hidden="true"></span>
-      <span>تصميم مهندس أحمد سيف</span>
+      <span class="dot2" aria-hidden="true"></span>
+      <span>تصميم د.زايد</span>
     </div>
   </footer>
 
@@ -812,28 +1029,45 @@
         desiredPf: 0.96,
         capacitorOn: false,
         bidirectionalOn: false,
+        // Advanced
         cableLen: 30,
         instMethod: "Tray",
         ambTemp: 30,
         derating: 1.0,
+        phaseFailureOn: true,
         advOpen: false,
+        // Simulation
+        sdStarTime: 8,
+        sdDeadTime: 0.2
       };
 
-      const LS_KEY = "motorCalc.v1";
+      const LS_KEY = "motorCalc.v3";
 
       // ----- Helpers -----
       const $ = (id)=>document.getElementById(id);
+
       const fmt = (n, d=2)=>{
         if (!isFinite(n)) return "—";
         const x = Number(n);
         return x.toLocaleString("en-US", { minimumFractionDigits:d, maximumFractionDigits:d });
       };
+
       const fmt0 = (n)=>{
         if (!isFinite(n)) return "—";
         return Math.round(Number(n)).toLocaleString("en-US");
       };
+
       const ceil = (x)=> Math.ceil(x);
       const isFiniteNumber = (v)=> typeof v === "number" && isFinite(v);
+
+      function escapeHTML(str){
+        return String(str)
+          .replace(/&/g,"&amp;")
+          .replace(/</g,"&lt;")
+          .replace(/>/g,"&gt;")
+          .replace(/"/g,"&quot;")
+          .replace(/'/g,"&#39;");
+      }
 
       function pickStandardUp(value, list){
         const v = Number(value);
@@ -844,6 +1078,7 @@
       }
 
       function startCurrentMultiplier(mode){
+        // D) as specified
         if (mode === "DOL + Overload") return 6;
         if (mode === "Star-Delta + Overload") return 2;
         if (mode === "Soft Starter") return 3;
@@ -854,15 +1089,18 @@
       function convertPowerToKW(powerVal, unit){
         const v = Number(powerVal);
         if (!isFinite(v)) return NaN;
+        // A) as specified
         if (unit === "HP") return v * 0.746;
-        return v;
+        return v; // kW
       }
 
       function calcPinKW(pKW, effPct){
+        // B) as specified
         return pKW / (Number(effPct)/100);
       }
 
       function calcCurrentA(pinKW, systemType, V, PF){
+        // C) as specified
         const pinW = pinKW * 1000;
         if (systemType === "3PH/AC"){
           return pinW / (Math.sqrt(3) * V * PF);
@@ -871,6 +1109,7 @@
       }
 
       function calcQcKvar(pinKW, pf1, pf2){
+        // F) as specified
         const P = pinKW;
         const phi1 = Math.acos(pf1);
         const phi2 = Math.acos(pf2);
@@ -879,6 +1118,7 @@
       }
 
       function calcVdropPct(systemType, I, V, Lm, size){
+        // G) as specified
         const R = copperR.get(size);
         const Lkm = Number(Lm) / 1000;
         if (!isFinite(R) || !isFinite(Lkm)) return { vdrop: NaN, pct: NaN };
@@ -893,6 +1133,7 @@
       }
 
       function suggestCableSize(I, deratingFactor){
+        // H) as specified
         const factor = Number(deratingFactor);
         const target = I * 1.25;
         for (let i=0;i<cableSizes.length;i++){
@@ -905,18 +1146,19 @@
       }
 
       function breakerDecisionText(inA){
+        // E) simplified note requested
         if (!isFinite(inA)) return "—";
-        if (inA <= 63){
-          return "MCB Curve C (أحمال عامة)";
-        }
+        if (inA <= 63) return "MCB Curve C (أحمال عامة)";
         return "MCCB (تيارات أكبر)";
       }
 
       function capacitorStepsSuggestion(qc){
+        // Recommended steps: 5/10/12.5 kVAR
         const steps = [5,10,12.5];
         const target = Math.max(0, Number(qc)||0);
-        if (target <= 0) return { text:"0", detail:"لا يلزم", combo:[], sum:0 };
+        if (target <= 0) return { detail:"لا يلزم", combo:[], sum:0 };
 
+        // Search simple combinations up to 6 units to approximate target (closest)
         let best = { err: Infinity, sum: 0, combo: [] };
         for (let a=0;a<=6;a++){
           for (let b=0;b<=6;b++){
@@ -939,7 +1181,7 @@
         if (b) parts.push(`${b}×10`);
         if (c) parts.push(`${c}×12.5`);
         const detail = parts.length ? parts.join(" + ") : "أقرب خطوة واحدة";
-        return { text: fmt(best.sum,1), detail, combo: best.combo, sum: best.sum };
+        return { detail, combo: best.combo, sum: best.sum };
       }
 
       function capStepsText(cs){
@@ -949,12 +1191,32 @@
         return display + detail;
       }
 
+      function toneLabel(t){
+        if (t==="ok") return "OK";
+        if (t==="warn") return "تنبيه";
+        if (t==="bad") return "خطأ";
+        return "—";
+      }
+
       function showToast(text){
         const t = $("toast");
         t.textContent = text;
         t.classList.add("show");
         clearTimeout(showToast._tm);
         showToast._tm = setTimeout(()=>t.classList.remove("show"), 1600);
+      }
+
+      // ----- Switch helpers -----
+      function setSwitch(el, on, fire=true){
+        if (el.classList.contains("disabled")) return;
+        el.classList.toggle("on", !!on);
+        el.setAttribute("aria-checked", !!on ? "true" : "false");
+        if (fire) updateAll(true);
+      }
+
+      function setSwitchDisabled(el, disabled){
+        el.classList.toggle("disabled", !!disabled);
+        el.setAttribute("aria-disabled", !!disabled ? "true" : "false");
       }
 
       // ----- State IO -----
@@ -974,7 +1236,11 @@
           instMethod: $("instMethod").value,
           ambTemp: Number($("ambTemp").value),
           derating: Number($("derating").value),
+          phaseFailureOn: $("togPF").classList.contains("on"),
           advOpen: $("adv").open === true,
+          // Simulation settings
+          sdStarTime: Number($("sdStarTime").value),
+          sdDeadTime: Number($("sdDeadTime").value)
         };
       }
 
@@ -988,15 +1254,24 @@
         $("startMode").value = st.startMode;
         $("desiredPf").value = String(st.desiredPf);
 
-        setSwitch($("togCap"), !!st.capacitorOn, false);
-        setSwitch($("togBi"), !!st.bidirectionalOn, false);
-
         $("cableLen").value = String(st.cableLen);
         $("instMethod").value = st.instMethod;
         $("ambTemp").value = String(st.ambTemp);
         $("derating").value = String(st.derating);
 
         $("adv").open = !!st.advOpen;
+
+        $("togCap").classList.toggle("on", !!st.capacitorOn);
+        $("togCap").setAttribute("aria-checked", !!st.capacitorOn ? "true" : "false");
+
+        $("togBi").classList.toggle("on", !!st.bidirectionalOn);
+        $("togBi").setAttribute("aria-checked", !!st.bidirectionalOn ? "true" : "false");
+
+        $("togPF").classList.toggle("on", !!st.phaseFailureOn);
+        $("togPF").setAttribute("aria-checked", !!st.phaseFailureOn ? "true" : "false");
+
+        $("sdStarTime").value = String(st.sdStarTime);
+        $("sdDeadTime").value = String(st.sdDeadTime);
       }
 
       function saveToLocal(st){
@@ -1022,7 +1297,10 @@
 
       // ----- Validation -----
       function clearErrors(){
-        const ids = ["voltage","systemType","powerVal","pf","eff","startMode","desiredPf","cableLen","instMethod","ambTemp","derating","toggles"];
+        const ids = [
+          "voltage","systemType","powerVal","pf","eff","startMode","desiredPf","cableLen",
+          "instMethod","ambTemp","derating","toggles","sdStarTime","sdDeadTime"
+        ];
         ids.forEach(k=>{
           const el = $("err-"+k);
           if (el){ el.textContent=""; el.classList.remove("show"); }
@@ -1048,6 +1326,9 @@
         if (!isFiniteNumber(st.cableLen) || st.cableLen < 0) issues.push({k:"cableLen", m:"Cable Length لا يقبل قيم سالبة."});
         if (!isFiniteNumber(st.ambTemp) || st.ambTemp < 0) issues.push({k:"ambTemp", m:"Ambient Temp لا يقبل قيم سالبة."});
         if (!isFiniteNumber(st.derating) || st.derating < 0) issues.push({k:"derating", m:"Derating Factor لا يقبل قيم سالبة."});
+        // Simulation validation (only show if present, but validate always to keep state clean)
+        if (!isFiniteNumber(st.sdStarTime) || st.sdStarTime < 0.1) issues.push({k:"sdStarTime", m:"Star Time يجب أن يكون ≥ 0.1 ثانية."});
+        if (!isFiniteNumber(st.sdDeadTime) || st.sdDeadTime < 0) issues.push({k:"sdDeadTime", m:"Dead Time لا يقبل قيم سالبة."});
         return issues;
       }
 
@@ -1057,41 +1338,60 @@
         const PF = Number(st.pf);
         const eff = Number(st.eff);
 
-        const pKW = convertPowerToKW(st.powerVal, st.powerUnit);
-        const pinKW = calcPinKW(pKW, eff);
-        const I = calcCurrentA(pinKW, st.systemType, V, PF);
+        const pKW = convertPowerToKW(st.powerVal, st.powerUnit);      // A
+        const pinKW = calcPinKW(pKW, eff);                           // B
+        const I = calcCurrentA(pinKW, st.systemType, V, PF);          // C
 
-        const mult = startCurrentMultiplier(st.startMode);
+        const mult = startCurrentMultiplier(st.startMode);            // D
         const Istart = I * mult;
 
+        // E
         const breakerRaw = ceil(I * 1.25);
         const breakerIn = pickStandardUp(breakerRaw, breakerStandards);
 
         const contactorRaw = ceil(I * 1.1);
         const contactorIn = pickStandardUp(contactorRaw, contactorStandards);
 
+        // Overload
         const olMin = 0.9 * I;
         const olMax = 1.1 * I;
 
-        const cableSize = suggestCableSize(I, Number(st.derating));
-        const { vdrop, pct: vdropPct } = calcVdropPct(st.systemType, I, V, Number(st.cableLen), cableSize);
+        // Cable
+        const cableSize = suggestCableSize(I, Number(st.derating));   // H
+        const { vdrop, pct: vdropPct } = calcVdropPct(st.systemType, I, V, Number(st.cableLen), cableSize); // G
 
+        // Capacitors
         let qc = 0;
         let capNote = "";
         if (st.capacitorOn){
           if (st.desiredPf > st.pf){
-            qc = calcQcKvar(pinKW, PF, Number(st.desiredPf));
+            qc = calcQcKvar(pinKW, PF, Number(st.desiredPf));         // F
           }else{
             qc = 0;
             capNote = "Desired PF يجب أن يكون أكبر من PF الحالي؛ تم ضبط Qc = 0.";
           }
         }
-
         const capSteps = capacitorStepsSuggestion(qc);
+
+        // Phase failure
+        const phaseFailureApplicable = (st.systemType === "3PH/AC");
+        const phaseFailureEnabled = phaseFailureApplicable ? !!st.phaseFailureOn : false;
+
+        // Star-Delta logic texts
+        const isSD = (st.startMode === "Star-Delta + Overload");
+        const sdSequence = isSD
+          ? "Power Side Sequence\n1) Start: KM1 + KM2 ON (Star)\n2) After Timer: KM2 OFF → (Dead time) → KM3 ON (Delta)"
+          : "—";
+        const sdInterlock = isSD
+          ? "Interlock Logic\n- Electrical interlock: NC(KM2) in KM3 coil & NC(KM3) in KM2 coil\n- Mechanical interlock بين KM2 و KM3 (موصى به)"
+          : "—";
+        const sdOverload = isSD
+          ? "Overload Logic\n- OL Trip يفتح دائرة ملفات الكونتاكتورات (KM1/KM2/KM3)\n- يتطلب Reset بعد إزالة سبب الحمل الزائد"
+          : "—";
 
         let starterText = "";
         if (st.startMode === "DOL + Overload") starterText = "تشغيل مباشر (DOL) + أوفرلود.";
-        else if (st.startMode === "Star-Delta + Overload") starterText = "ستار-دلتا لتقليل تيار البدء.";
+        else if (isSD) starterText = "Star–Delta + Overload (Complete Protection عند تفعيل Phase Failure).";
         else if (st.startMode === "Soft Starter") starterText = "سوفت ستارتر للتحكم بالتسارع وتقليل تيار البدء.";
         else if (st.startMode === "VFD") starterText = "إنفرتر (VFD) للتحكم بالسرعة + تيار بدء منخفض.";
 
@@ -1106,7 +1406,13 @@
           cableSize,
           vdrop, vdropPct,
           qc, capSteps, capNote,
-          starterText
+          starterText,
+          phaseFailureApplicable,
+          phaseFailureEnabled,
+          isSD,
+          sdSequence,
+          sdInterlock,
+          sdOverload
         };
       }
 
@@ -1115,62 +1421,327 @@
         const rows = [];
         const add = (name, spec, qty, note)=>rows.push({name, spec, qty, note});
 
+        // Always:
         add("قاطع رئيسي (MCCB/MCB)", `${out.breakerIn} A — ${out.breakerType}`, 1, "ضبط تقريبي حسب I×1.25 ثم أقرب قيمة قياسية.");
-        const baseContactorQty = st.bidirectionalOn ? 2 : 1;
-        add("كونتاكتور (AC-3)", `${out.contactorIn} A`, baseContactorQty, st.bidirectionalOn ? "Forward/Reverse" : "تشغيل اتجاه واحد");
         add("أوفرلود (Overload Relay)", `[${fmt(out.olMin,2)} .. ${fmt(out.olMax,2)}] A`, 1, "نطاق 0.9×I إلى 1.1×I.");
         add("كابل تغذية (Cu/PVC)", `${out.cableSize} mm² — طول ${fmt0(st.cableLen)} m`, 1, `طريقة التركيب: ${st.instMethod}. Derating: ${fmt(st.derating,2)}.`);
         add("أطراف/لَقم (Lugs/Terminals)", `طقم أطراف مناسب لـ ${out.cableSize} mm²`, 1, "اختيار نوع الأطراف حسب اللوحة/القاطع.");
 
+        // Phase failure protection (for 3PH)
+        if (out.phaseFailureApplicable && out.phaseFailureEnabled){
+          add("Phase Failure Relay", "3PH Phase loss / Phase unbalance", 1, "يوضع في دائرة التحكم لإيقاف التشغيل عند فقد/عدم توازن/عكس الفاز.");
+        }
+
+        // Starter specifics
         if (st.startMode === "Star-Delta + Overload"){
-          add("كونتاكتورات ستار-دلتا", "3× Contactor (Line/Star/Delta) + Interlock", 1, "تجميع ستار-دلتا كامل.");
-          add("مؤقت (Timer)", "Star-Delta Timer", 1, "للتحويل من Star إلى Delta.");
-          add("إنترلوك", "ميكانيكي/كهربائي", 1, "منع التداخل بين Star و Delta.");
-        }else if (st.startMode === "Soft Starter"){
-          add("سوفت ستارتر", `تصنيف ≈ ${out.contactorIn} A (تقريبًا)`, 1, "اختيار أدق حسب كتالوج الشركة.");
-          add("كونتاكتور Bypass (اختياري)", `${out.contactorIn} A`, 1, "لتجاوز السوفت ستارتر بعد الإقلاع (إن لزم).");
-        }else if (st.startMode === "VFD"){
+          add("KM1 Main Contactor (Complete Protection)", `${out.contactorIn} A (AC-3)`, 1, "كونتاكتور رئيسي للخط (Line).");
+          add("KM2 Star Contactor (Complete Protection)", `${out.contactorIn} A (AC-3)`, 1, "كونتاكتور ستار (Star).");
+          add("KM3 Delta Contactor (Complete Protection)", `${out.contactorIn} A (AC-3)`, 1, "كونتاكتور دلتا (Delta).");
+          add("Star–Delta Timer", `Star=${fmt(st.sdStarTime,1)}s • Dead=${fmt(st.sdDeadTime,2)}s`, 1, "زمن التحويل + Dead time حسب الإعداد.");
+          add("Interlock Set", "Mechanical + Electrical", 1, "ميكانيكي بين KM2/KM3 + كهربائي (NC تبادلي).");
+          add("Control Protection", "MCB/Fuse for control circuit", 1, "حماية دائرة التحكم (موصى به).");
+
+          if (st.bidirectionalOn){
+            add("Forward/Reverse Arrangement", "F/R contactors + Interlock", 1, "عكس الحركة مع ستار-دلتا يحتاج تصميم تحكم متقدم (زيادة عدد الكونتاكتورات).");
+          }
+        } else if (st.startMode === "Soft Starter"){
+          add("Soft Starter", `تصنيف ≈ ${out.contactorIn} A (تقريبًا)`, 1, "اختيار أدق حسب كتالوج الشركة.");
+          add("Bypass Contactor (اختياري)", `${out.contactorIn} A`, 1, "لتجاوز السوفت ستارتر بعد الإقلاع (إن لزم).");
+          if (st.bidirectionalOn){
+            add("Forward/Reverse Arrangement", "F/R contactors + Interlock", 1, "عادةً يتم العكس قبل السوفت ستارتر حسب التصميم.");
+          }
+        } else if (st.startMode === "VFD"){
           add("VFD (إنفرتر)", `قدرة ≈ ${fmt(out.pKW,2)} kW @ ${fmt0(out.V)} V`, 1, "اختيار أدق حسب تيار اللوحة والكفاءة.");
           add("EMC Filter (اختياري)", "حسب توصية المصنع", 1, "لتقليل التداخل الكهرومغناطيسي.");
+          if (st.bidirectionalOn){
+            add("Reverse Function (VFD)", "Reverse via VFD logic input", 1, "العكس غالباً داخل الـ VFD بدون كونتاكتورات إضافية.");
+          }
+        } else {
+          const baseContactorQty = st.bidirectionalOn ? 2 : 1;
+          add("كونتاكتور (AC-3)", `${out.contactorIn} A`, baseContactorQty, st.bidirectionalOn ? "Forward/Reverse" : "تشغيل اتجاه واحد");
+          if (st.bidirectionalOn){
+            add("Interlock (F/R)", "Mechanical/Electrical", 1, "منع تشغيل الكونتاكتورين معًا.");
+          }
         }
 
+        // Capacitors
         if (st.capacitorOn){
-          add("بنك مكثفات", `${fmt(out.qc,2)} kVAR (مطلوب)`, 1, out.capNote || "لتصحيح معامل القدرة.");
-          add("خطوات مكثفات مقترحة", `${capStepsText(out.capSteps)}`, 1, out.capSteps.detail || "تقسيمات 5/10/12.5 kVAR.");
-          add("كونتاكتور مكثفات", "Capacitor Duty Contactor", 1, "مخصص للمكثفات.");
-          add("فيوز/حماية مكثفات", "Fuse / Protection", 1, "حسب تيار المكثفات وتوصية المصنع.");
-        }
-
-        if (st.bidirectionalOn){
-          add("عكس حركة (Forward/Reverse)", "ترتيب كونتاكتورين + Interlock", 1, "إنترلوك ميكانيكي/كهربائي لمنع التعارض.");
+          add("Capacitor Bank", `${fmt(out.qc,2)} kVAR (مطلوب)`, 1, out.capNote || "لتصحيح معامل القدرة.");
+          add("Capacitor Steps (Suggested)", `${capStepsText(out.capSteps)}`, 1, "تقسيمات 5/10/12.5 kVAR (أقرب توليفة).");
+          add("Capacitor Duty Contactor", "Capacitor contactor", 1, "مخصص للمكثفات.");
+          add("Capacitor Fuse/Protection", "Fuse / protection", 1, "حسب تيار المكثفات وتوصية المصنع.");
         }
 
         return rows;
       }
 
+      // ----- Simulation (Star-Delta) -----
+      const sim = (function(){
+        const S = {
+          state: "IDLE",      // IDLE | STAR | DEAD | DELTA | TRIP
+          running: false,
+          km1:false, km2:false, km3:false,
+          olTripped:false,
+          pfFault:false,
+          lastTs: 0,
+          stateStart: 0,
+          starTime: 8,
+          deadTime: 0.2,
+          // derived
+          phaseProtEnabled: true,
+          canRun: true,
+          note: ""
+        };
+
+        function setState(st){
+          S.state = st;
+          S.stateStart = now();
+          if (st === "IDLE"){
+            S.running = false;
+            S.km1 = S.km2 = S.km3 = false;
+          } else if (st === "STAR"){
+            S.running = true;
+            S.km1 = true; S.km2 = true; S.km3 = false;
+          } else if (st === "DEAD"){
+            S.running = true;
+            S.km1 = true; S.km2 = false; S.km3 = false;
+          } else if (st === "DELTA"){
+            S.running = true;
+            S.km1 = true; S.km2 = false; S.km3 = true;
+          } else if (st === "TRIP"){
+            S.running = false;
+            S.km1 = S.km2 = S.km3 = false;
+          }
+          enforceInterlock();
+        }
+
+        function enforceInterlock(){
+          // KM2 and KM3 must never be ON together
+          if (S.km2 && S.km3){
+            // force safe
+            S.km3 = false;
+            // trip as fault
+            S.note = "Fault: Interlock violation (KM2 & KM3 ON) → TRIP";
+            trip("INTERLOCK");
+          }
+        }
+
+        function now(){
+          return performance.now();
+        }
+
+        function start(){
+          if (!S.canRun){
+            S.note = "غير متاح: اختر 3PH + Star-Delta لتشغيل المحاكاة.";
+            render();
+            return;
+          }
+          if (S.olTripped){
+            S.note = "OL Trip: اضغط Reset أولاً.";
+            render();
+            return;
+          }
+          if (S.pfFault && S.phaseProtEnabled){
+            S.note = "Phase Failure: اضغط Reset أولاً.";
+            render();
+            return;
+          }
+          S.note = "";
+          setState("STAR");
+        }
+
+        function stop(){
+          S.note = "";
+          setState("IDLE");
+        }
+
+        function trip(reason){
+          setState("TRIP");
+          if (reason === "OL") S.olTripped = true;
+          if (reason === "PF") S.pfFault = true;
+          // INTERLOCK is a fault too -> treat as trip, keep note
+        }
+
+        function tripOL(){
+          if (!S.canRun) return;
+          S.note = "Overload Trip (OL) → TRIP (يتطلب Reset)";
+          trip("OL");
+        }
+
+        function tripPF(){
+          if (!S.canRun) return;
+          S.pfFault = true;
+          if (S.phaseProtEnabled){
+            S.note = "Phase Failure Detected → TRIP (يتطلب Reset)";
+            trip("PF");
+          }else{
+            S.note = "Phase Failure Simulated (Protection OFF) — Alarm فقط";
+            // keep running, do not trip if protection off
+            render();
+          }
+        }
+
+        function resetTrips(){
+          S.olTripped = false;
+          S.pfFault = false;
+          S.note = "Reset OK";
+          setState("IDLE");
+        }
+
+        function setParams(starTime, deadTime, phaseProtEnabled, canRun){
+          S.starTime = Math.max(0.1, Number(starTime)||0.1);
+          S.deadTime = Math.max(0, Number(deadTime)||0);
+          S.phaseProtEnabled = !!phaseProtEnabled;
+          S.canRun = !!canRun;
+
+          // if simulation becomes unavailable, stop and reset state (without clearing trips)
+          if (!S.canRun){
+            setState("IDLE");
+            S.note = "المحاكاة متاحة فقط عند: System=3PH/AC + Start Mode=Star-Delta + Overload";
+          }else{
+            if (S.note.startsWith("المحاكاة متاحة")) S.note = "";
+          }
+          render();
+        }
+
+        function tick(){
+          // called periodically
+          if (!S.canRun){
+            render();
+            return;
+          }
+          // If protection enabled and pf fault present -> trip (unless already tripped)
+          if (S.pfFault && S.phaseProtEnabled && S.state !== "TRIP"){
+            S.note = "Phase Failure Detected → TRIP (Protection ON)";
+            trip("PF");
+            render();
+            return;
+          }
+
+          if (S.state === "STAR"){
+            const t = (now() - S.stateStart)/1000;
+            if (t >= S.starTime){
+              // transition: KM2 OFF -> DEAD time
+              setState("DEAD");
+            }
+          } else if (S.state === "DEAD"){
+            const t = (now() - S.stateStart)/1000;
+            if (t >= S.deadTime){
+              setState("DELTA");
+            }
+          }
+          enforceInterlock();
+          render();
+        }
+
+        function stateLabel(){
+          if (S.state === "IDLE") return "IDLE";
+          if (S.state === "STAR") return "STAR (KM1+KM2)";
+          if (S.state === "DEAD") return "DEAD TIME";
+          if (S.state === "DELTA") return "DELTA (KM1+KM3)";
+          if (S.state === "TRIP") return "TRIP";
+          return S.state;
+        }
+
+        function remainingText(){
+          if (S.state === "STAR"){
+            const elapsed = (now() - S.stateStart)/1000;
+            const rem = Math.max(0, S.starTime - elapsed);
+            return `Star: remaining ${fmt(rem,1)} s`;
+          }
+          if (S.state === "DEAD"){
+            const elapsed = (now() - S.stateStart)/1000;
+            const rem = Math.max(0, S.deadTime - elapsed);
+            return `Dead-time: remaining ${fmt(rem,2)} s`;
+          }
+          if (S.state === "DELTA"){
+            return "Running: DELTA";
+          }
+          if (S.state === "TRIP"){
+            const parts = [];
+            if (S.olTripped) parts.push("OL=TRIPPED");
+            if (S.pfFault && S.phaseProtEnabled) parts.push("PHASE=TRIPPED");
+            if (!parts.length) parts.push("FAULT");
+            return `TRIP: ${parts.join(" | ")}`;
+          }
+          return "Ready";
+        }
+
+        function render(){
+          const wrap = $("simWrap");
+          if (!wrap) return;
+
+          const badge = $("simStateBadge");
+          const readout = $("simReadout");
+          const avail = $("simAvailNote");
+          const faultNote = $("simFaultNote");
+
+          const km1Dot = $("km1Dot"), km2Dot = $("km2Dot"), km3Dot = $("km3Dot"), protDot = $("protDot");
+          const km1Txt = $("km1Txt"), km2Txt = $("km2Txt"), km3Txt = $("km3Txt"), protTxt = $("protTxt");
+
+          badge.textContent = stateLabel();
+          badge.className = "badge " + (S.state === "TRIP" ? "bad" : (S.state === "DELTA" ? "ok" : (S.state === "STAR" || S.state === "DEAD" ? "warn" : "")));
+
+          km1Dot.className = "dot " + (S.km1 ? "on" : "");
+          km2Dot.className = "dot " + (S.km2 ? "on" : "");
+          km3Dot.className = "dot " + (S.km3 ? "on" : "");
+
+          km1Txt.textContent = S.km1 ? "ON" : "OFF";
+          km2Txt.textContent = S.km2 ? "ON" : "OFF";
+          km3Txt.textContent = S.km3 ? "ON" : "OFF";
+
+          // Protections indicator
+          let protStatus = "OK";
+          let protClass = "dot on";
+          if (S.olTripped){
+            protStatus = "OL TRIPPED";
+            protClass = "dot bad";
+          } else if (S.pfFault && S.phaseProtEnabled){
+            protStatus = "PHASE TRIPPED";
+            protClass = "dot bad";
+          } else if (S.pfFault && !S.phaseProtEnabled){
+            protStatus = "PHASE ALARM (OFF)";
+            protClass = "dot warn";
+          } else if (!S.phaseProtEnabled){
+            protStatus = "Phase Protection OFF";
+            protClass = "dot warn";
+          }
+          protTxt.textContent = protStatus;
+          protDot.className = protClass;
+
+          avail.textContent = S.canRun
+            ? `متاح ✓ — Timer: Star=${fmt(S.starTime,1)}s • Dead=${fmt(S.deadTime,2)}s`
+            : `غير متاح — يلزم: 3PH/AC + Star-Delta + Overload`;
+
+          faultNote.textContent = S.note ? `ملاحظة: ${S.note}` : "";
+
+          readout.textContent =
+`Star–Delta Starter (Complete Protection)
+${remainingText()}
+
+Power Side Sequence:
+1) Start: KM1 + KM2 (Star)
+2) Timer End → KM2 OFF
+3) Dead-time → KM3 ON (Delta)
+
+Interlock Logic:
+- KM2 ↔ KM3 Electrical interlock + Mechanical interlock (موصى به)
+
+Overload Logic:
+- OL Trip يفتح دائرة ملفات الكونتاكتورات ويستلزم Reset
+
+Phase Failure:
+- Protection ${S.phaseProtEnabled ? "ON" : "OFF"} (3PH only)
+`;
+        }
+
+        return {
+          setParams, start, stop, tripOL, tripPF, resetTrips, tick, render,
+          setState // internal
+        };
+      })();
+
       // ----- UI Rendering -----
-      function setSwitch(el, on, fire=true){
-        el.classList.toggle("on", !!on);
-        el.setAttribute("aria-checked", !!on ? "true" : "false");
-        if (fire) updateAll(true);
-      }
-
-      function toneLabel(t){
-        if (t==="ok") return "OK";
-        if (t==="warn") return "تنبيه";
-        if (t==="bad") return "خطأ";
-        return "—";
-      }
-
-      function escapeHTML(str){
-        return String(str)
-          .replace(/&/g,"&amp;")
-          .replace(/</g,"&lt;")
-          .replace(/>/g,"&gt;")
-          .replace(/"/g,"&quot;")
-          .replace(/'/g,"&#39;");
-      }
-
       function renderResults(st, out, issues){
         const grid = $("resultsGrid");
         const notes = $("calcNotes");
@@ -1185,17 +1756,30 @@
           badge.textContent = "صحيح";
         }
 
+        const protBadge = out.phaseFailureEnabled ? "مفعّل" : (out.phaseFailureApplicable ? "غير مفعّل" : "غير متاح");
+        const protTone = out.phaseFailureEnabled ? "ok" : "warn";
+
         const cards = [
           { k:"Motor Current (A)", v:`${fmt(out.I,2)}`, s: `${st.systemType} عند ${fmt0(out.V)} V`, tone: issues.length ? "bad" : "ok" },
           { k:"Starting Current (A)", v:`${fmt(out.Istart,2)}`, s: `${st.startMode} (×${fmt(out.mult,1)})`, tone: "warn" },
           { k:"Recommended MCCB/MCB", v:`${fmt0(out.breakerIn)} A`, s: out.breakerType, tone: out.breakerIn >= 160 ? "warn" : "ok" },
-          { k:"Contactor Rating (AC-3)", v:`${fmt0(out.contactorIn)} A`, s: st.bidirectionalOn ? "عدد: 2 (F/R)" : "عدد: 1", tone: "ok" },
+          { k:"Contactor Rating (AC-3)", v:`${fmt0(out.contactorIn)} A`, s: out.isSD ? "KM1/KM2/KM3 (Star–Delta)" : (st.bidirectionalOn ? "عدد: 2 (F/R)" : "عدد: 1"), tone: "ok" },
           { k:"Overload Relay Range (A)", v:`${fmt(out.olMin,2)} – ${fmt(out.olMax,2)}`, s:"0.9×I .. 1.1×I", tone:"ok" },
           { k:"Cable Size Recommendation", v:`${out.cableSize} mm²`, s:"Cu/PVC (افتراضي)", tone: out.cableSize >= 70 ? "warn" : "ok" },
           { k:"Voltage Drop (%)", v:`${fmt(out.vdropPct,2)}%`, s:`تقريبًا (${fmt(out.vdrop,2)} V)`, tone: out.vdropPct > 5 ? "warn" : "ok" },
+          { k:"Phase Failure Protection", v:`${protBadge}`, s: out.phaseFailureApplicable ? "Phase loss / unbalance relay" : "متاح فقط لـ 3PH", tone: protTone },
           { k:"Required Capacitor (kVAR)", v: st.capacitorOn ? `${fmt(out.qc,2)}` : "OFF", s: st.capacitorOn ? (out.capNote || "حساب تصحيح PF") : "إيقاف", tone: st.capacitorOn ? (out.qc > 0 ? "ok" : "warn") : "ok" },
           { k:"Capacitor steps", v: st.capacitorOn ? `${fmt(out.capSteps.sum,1)}` : "—", s: st.capacitorOn ? (out.capSteps.detail || "5/10/12.5 kVAR") : "—", tone: st.capacitorOn ? "ok" : "ok" }
         ];
+
+        if (out.isSD){
+          cards.push(
+            { k:"Star–Delta Starter (Complete Protection)", v:"MCCB + Phase Failure + Overload", s:"KM2 (Star) + KM3 (Delta) + Interlock", tone: out.phaseFailureEnabled ? "ok" : "warn" },
+            { k:"Power Side Sequence", v:"KM1/KM2 → KM3", s: out.sdSequence, tone:"ok" },
+            { k:"Interlock Logic", v:"KM2 ↔ KM3", s: out.sdInterlock, tone:"ok" },
+            { k:"Overload Logic", v:"OL Trip", s: out.sdOverload, tone:"ok" }
+          );
+        }
 
         cards.forEach(c=>{
           const div = document.createElement("div");
@@ -1214,6 +1798,9 @@
         const noteLines = [];
         noteLines.push(`• قدرة ميكانيكية: ${fmt(out.pKW,2)} kW — قدرة دخل كهربياً Pin: ${fmt(out.pinKW,2)} kW (وفق الكفاءة).`);
         noteLines.push(`• ${out.starterText}`);
+        if (out.isSD){
+          noteLines.push(`• Star–Delta Protection: MCCB + Overload${out.phaseFailureApplicable ? (out.phaseFailureEnabled ? " + Phase Failure (ON)" : " + Phase Failure (OFF)") : ""}.`);
+        }
         if (st.capacitorOn && out.capNote) noteLines.push(`• ${out.capNote}`);
         if (out.vdropPct > 5) noteLines.push("• تنبيه: هبوط الجهد التقريبي أعلى من 5% — راجع طول الكابل أو المقطع.");
         if (Number(st.derating) < 1) noteLines.push("• ملاحظة: Derating Factor أقل من 1 يقلل سعة الكابل المسموح بها.");
@@ -1240,7 +1827,9 @@
         const extras = [];
         extras.push(`البيانات: ${fmt(out.pKW,2)} kW • ${fmt0(out.V)} V • I=${fmt(out.I,2)} A • القاطع=${fmt0(out.breakerIn)} A • الكابل=${out.cableSize} mm²`);
         if (st.capacitorOn) extras.push(`مكثفات: ${fmt(out.qc,2)} kVAR`);
+        if (out.phaseFailureApplicable) extras.push(`Phase Failure: ${out.phaseFailureEnabled ? "ON" : "OFF"}`);
         if (st.bidirectionalOn) extras.push("Bidirectional: ON");
+        if (out.isSD) extras.push(`Starter: Star–Delta (Star=${fmt(st.sdStarTime,1)}s, Dead=${fmt(st.sdDeadTime,2)}s)`);
         bn.textContent = extras.join(" — ");
       }
 
@@ -1256,91 +1845,169 @@
         const cable = `${out.cableSize} mm²`;
         const vd = fmt(out.vdropPct,2);
 
-        const W = 980, H = 380;
-        const y = 170;
+        const W = 1020, H = 420;
+        const y = 195;
 
         const x0 = 70;
-        const x1 = 220;
-        const x2 = 420;
-        const x3 = 650;
-        const x4 = 880;
+        const x1 = 240;
+        const x2 = 470;
+        const x3 = 720;
+        const x4 = 950;
 
         const capOn = !!st.capacitorOn;
         const biOn = !!st.bidirectionalOn;
+        const sdOn = !!out.isSD;
 
+        const phaseProtTag = out.phaseFailureApplicable
+          ? (out.phaseFailureEnabled ? "Phase Failure: ON" : "Phase Failure: OFF")
+          : "Phase Failure: N/A";
+
+        // Starter label
         let starterLabel = "Starter";
         if (st.startMode === "DOL + Overload") starterLabel = "DOL";
-        else if (st.startMode === "Star-Delta + Overload") starterLabel = "Star-Delta";
+        else if (sdOn) starterLabel = "Star–Delta";
         else if (st.startMode === "Soft Starter") starterLabel = "Soft Starter";
         else if (st.startMode === "VFD") starterLabel = "VFD";
 
-        const motorLabel = biOn ? "Motor (F/R)" : "Motor";
+        const motorLabel = sdOn ? "Motor (Star→Delta)" : (biOn ? "Motor (F/R)" : "Motor");
 
+        // Capacitor branch
         const capBranch = capOn ? `
-          <path d="M ${x1+40} ${y-70} L ${x1+40} ${y-110} L ${x2-40} ${y-110} L ${x2-40} ${y-70}" fill="none" stroke="#0f172a" stroke-width="2.5" />
-          <rect x="${x1+62}" y="${y-132}" rx="10" ry="10" width="150" height="46" fill="#fff" stroke="#e2e8f0" />
-          <text x="${x1+137}" y="${y-105}" text-anchor="middle" font-size="15" font-weight="900" fill="#0f172a">Capacitor</text>
-          <text x="${x1+137}" y="${y-86}" text-anchor="middle" font-size="13" font-weight="800" fill="#64748b">${capOn ? (fmt(out.qc,2)+" kVAR") : ""}</text>
+          <path d="M ${x1+20} ${y-80} L ${x1+20} ${y-130} L ${x2-20} ${y-130} L ${x2-20} ${y-80}" fill="none" stroke="#0f172a" stroke-width="2.5" />
+          <rect x="${x1+40}" y="${y-154}" rx="12" ry="12" width="190" height="56" fill="#fff" stroke="#e2e8f0" />
+          <text x="${x1+135}" y="${y-126}" text-anchor="middle" font-size="15" font-weight="900" fill="#0f172a">Capacitor</text>
+          <text x="${x1+135}" y="${y-106}" text-anchor="middle" font-size="13" font-weight="900" fill="#64748b">${fmt(out.qc,2)} kVAR</text>
         ` : "";
 
-        const starterInner = biOn ? `
-          <rect x="${x2+20}" y="${y-22}" rx="10" ry="10" width="86" height="44" fill="#fff" stroke="#e2e8f0" />
-          <rect x="${x2+114}" y="${y-22}" rx="10" ry="10" width="86" height="44" fill="#fff" stroke="#e2e8f0" />
-          <text x="${x2+63}" y="${y+6}" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">FWD</text>
-          <text x="${x2+157}" y="${y+6}" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">REV</text>
-          <text x="${x2+90}" y="${y+42}" text-anchor="middle" font-size="12" font-weight="800" fill="#64748b">Interlock</text>
-        ` : `
-          <text x="${x2+110}" y="${y+7}" text-anchor="middle" font-size="14" font-weight="900" fill="#0f172a">${escapeHTML(starterLabel)}</text>
-        `;
+        // Phase failure block (protection label)
+        const phaseBlock = out.phaseFailureApplicable ? `
+          <rect x="${x1-90}" y="${y-170}" rx="12" ry="12" width="180" height="52" fill="#fff" stroke="#e2e8f0" />
+          <text x="${x1}" y="${y-142}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">Phase Failure</text>
+          <text x="${x1}" y="${y-124}" text-anchor="middle" font-size="12" font-weight="1000" fill="${out.phaseFailureEnabled ? "#065f46" : "#92400e"}">${out.phaseFailureEnabled ? "ON" : "OFF"}</text>
+          <path d="M ${x1} ${y-118} L ${x1} ${y-34}" fill="none" stroke="#0f172a" stroke-width="2" stroke-dasharray="5 5"/>
+        ` : "";
+
+        // Starter inner rendering
+        let starterInner = "";
+        if (sdOn){
+          starterInner = `
+            <text x="${x2}" y="${y-56}" text-anchor="middle" font-size="14" font-weight="1000" fill="#0f172a">Star–Delta Starter</text>
+
+            <rect x="${x2-130}" y="${y-42}" rx="14" ry="14" width="260" height="110" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+            <text x="${x2}" y="${y-16}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">KM1 (Line)  •  OL</text>
+            <text x="${x2}" y="${y+4}" text-anchor="middle" font-size="12" font-weight="1000" fill="#64748b">Timer: Star ${fmt(st.sdStarTime,1)}s • Dead ${fmt(st.sdDeadTime,2)}s</text>
+
+            <rect x="${x2-115}" y="${y+18}" rx="12" ry="12" width="110" height="46" fill="#fff" stroke="#e2e8f0" />
+            <rect x="${x2+5}" y="${y+18}" rx="12" ry="12" width="110" height="46" fill="#fff" stroke="#e2e8f0" />
+            <text x="${x2-60}" y="${y+46}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">KM2</text>
+            <text x="${x2-60}" y="${y+62}" text-anchor="middle" font-size="11.5" font-weight="1000" fill="#64748b">Star</text>
+            <text x="${x2+60}" y="${y+46}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">KM3</text>
+            <text x="${x2+60}" y="${y+62}" text-anchor="middle" font-size="11.5" font-weight="1000" fill="#64748b">Delta</text>
+
+            <rect x="${x2-54}" y="${y+72}" rx="10" ry="10" width="108" height="40" fill="#fff" stroke="#e2e8f0" />
+            <text x="${x2}" y="${y+97}" text-anchor="middle" font-size="12.5" font-weight="1000" fill="#0f172a">Interlock</text>
+          `;
+        } else if (biOn){
+          starterInner = `
+            <rect x="${x2-120}" y="${y-54}" rx="16" ry="16" width="240" height="108" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+            <text x="${x2}" y="${y-22}" text-anchor="middle" font-size="14" font-weight="1000" fill="#0f172a">${escapeHTML(starterLabel)}</text>
+            <rect x="${x2-96}" y="${y-6}" rx="12" ry="12" width="90" height="46" fill="#fff" stroke="#e2e8f0" />
+            <rect x="${x2+6}" y="${y-6}" rx="12" ry="12" width="90" height="46" fill="#fff" stroke="#e2e8f0" />
+            <text x="${x2-51}" y="${y+22}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">FWD</text>
+            <text x="${x2+51}" y="${y+22}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">REV</text>
+            <text x="${x2}" y="${y+58}" text-anchor="middle" font-size="12" font-weight="1000" fill="#64748b">Interlock</text>
+          `;
+        } else {
+          starterInner = `
+            <rect x="${x2-110}" y="${y-44}" rx="16" ry="16" width="220" height="88" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+            <text x="${x2}" y="${y+7}" text-anchor="middle" font-size="14" font-weight="1000" fill="#0f172a">${escapeHTML(starterLabel)}</text>
+          `;
+        }
 
         wrap.innerHTML = `
           <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Single Line Diagram">
-            <text x="${W-30}" y="40" text-anchor="end" font-size="18" font-weight="1000" fill="#0f172a">Single Line Diagram</text>
-            <text x="${W-30}" y="62" text-anchor="end" font-size="13" font-weight="800" fill="#64748b">Source → MCCB/MCB → Starter → Motor</text>
+            <text x="${W-30}" y="42" text-anchor="end" font-size="18" font-weight="1000" fill="#0f172a">Single Line Diagram</text>
+            <text x="${W-30}" y="64" text-anchor="end" font-size="13" font-weight="1000" fill="#64748b">Source → MCCB → Starter → Motor</text>
 
             <path d="M ${x0} ${y} L ${x4} ${y}" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
 
             <circle cx="${x0}" cy="${y}" r="8" fill="#0f172a"/>
-            <text x="${x0}" y="${y+36}" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">Source</text>
+            <text x="${x0}" y="${y+36}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">Source</text>
 
-            <rect x="${x1-70}" y="${y-34}" rx="14" ry="14" width="140" height="68" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+            <rect x="${x1-78}" y="${y-34}" rx="14" ry="14" width="156" height="68" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
             <text x="${x1}" y="${y-6}" text-anchor="middle" font-size="14" font-weight="1000" fill="#0f172a">MCCB/MCB</text>
-            <text x="${x1}" y="${y+16}" text-anchor="middle" font-size="13" font-weight="800" fill="#64748b">${br} A</text>
+            <text x="${x1}" y="${y+16}" text-anchor="middle" font-size="13" font-weight="1000" fill="#64748b">${br} A</text>
 
-            <rect x="${x2-90}" y="${y-44}" rx="16" ry="16" width="180" height="88" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
-            ${starterInner}
-
-            <circle cx="${x3}" cy="${y}" r="34" fill="#fff" stroke="#e2e8f0" stroke-width="2"/>
-            <text x="${x3}" y="${y+6}" text-anchor="middle" font-size="14" font-weight="1000" fill="#0f172a">${escapeHTML(motorLabel)}</text>
-
-            <rect x="${x2+120}" y="${y+54}" rx="12" ry="12" width="250" height="56" fill="#fff" stroke="#e2e8f0" />
-            <text x="${x2+245}" y="${y+78}" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">Cable: ${escapeHTML(cable)}</text>
-            <text x="${x2+245}" y="${y+98}" text-anchor="middle" font-size="12" font-weight="800" fill="#64748b">Vdrop ≈ ${vd}%</text>
-
-            <rect x="${W-350}" y="${H-130}" rx="16" ry="16" width="320" height="100" fill="#fff" stroke="#e2e8f0" />
-            <text x="${W-320}" y="${H-98}" text-anchor="start" font-size="13" font-weight="900" fill="#0f172a">V: ${V} V</text>
-            <text x="${W-320}" y="${H-74}" text-anchor="start" font-size="13" font-weight="900" fill="#0f172a">I: ${I} A</text>
-            <text x="${W-320}" y="${H-50}" text-anchor="start" font-size="13" font-weight="900" fill="#0f172a">P: ${p} kW</text>
-            <text x="${W-180}" y="${H-98}" text-anchor="start" font-size="13" font-weight="900" fill="#0f172a">PF: ${pf}</text>
-            <text x="${W-180}" y="${H-74}" text-anchor="start" font-size="13" font-weight="900" fill="#0f172a">In: ${br} A</text>
-            <text x="${W-180}" y="${H-50}" text-anchor="start" font-size="13" font-weight="900" fill="#0f172a">${escapeHTML(st.systemType)}</text>
-
+            ${phaseBlock}
             ${capBranch}
 
-            ${biOn ? `
-              <rect x="40" y="${H-92}" rx="999" ry="999" width="250" height="44" fill="rgba(22,163,74,.10)" stroke="rgba(22,163,74,.28)" />
-              <text x="165" y="${H-64}" text-anchor="middle" font-size="13" font-weight="1000" fill="#065f46">Bidirectional: ON (F/R)</text>
-            ` : `
-              <rect x="40" y="${H-92}" rx="999" ry="999" width="220" height="44" fill="rgba(37,99,235,.08)" stroke="rgba(37,99,235,.25)" />
-              <text x="150" y="${H-64}" text-anchor="middle" font-size="13" font-weight="1000" fill="#1e3a8a">Direction: Forward</text>
-            `}
+            ${starterInner}
+
+            <circle cx="${x3}" cy="${y}" r="38" fill="#fff" stroke="#e2e8f0" stroke-width="2"/>
+            <text x="${x3}" y="${y+6}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">${escapeHTML(motorLabel)}</text>
+
+            <rect x="${x2+145}" y="${y+62}" rx="12" ry="12" width="280" height="58" fill="#fff" stroke="#e2e8f0" />
+            <text x="${x2+285}" y="${y+86}" text-anchor="middle" font-size="13" font-weight="1000" fill="#0f172a">Cable: ${escapeHTML(cable)}</text>
+            <text x="${x2+285}" y="${y+106}" text-anchor="middle" font-size="12" font-weight="1000" fill="#64748b">Vdrop ≈ ${vd}%</text>
+
+            <rect x="${W-360}" y="${H-140}" rx="16" ry="16" width="330" height="110" fill="#fff" stroke="#e2e8f0" />
+            <text x="${W-330}" y="${H-108}" text-anchor="start" font-size="13" font-weight="1000" fill="#0f172a">V: ${V} V</text>
+            <text x="${W-330}" y="${H-82}" text-anchor="start" font-size="13" font-weight="1000" fill="#0f172a">I: ${I} A</text>
+            <text x="${W-330}" y="${H-56}" text-anchor="start" font-size="13" font-weight="1000" fill="#0f172a">P: ${p} kW</text>
+            <text x="${W-190}" y="${H-108}" text-anchor="start" font-size="13" font-weight="1000" fill="#0f172a">PF: ${pf}</text>
+            <text x="${W-190}" y="${H-82}" text-anchor="start" font-size="13" font-weight="1000" fill="#0f172a">In: ${br} A</text>
+            <text x="${W-190}" y="${H-56}" text-anchor="start" font-size="13" font-weight="1000" fill="#0f172a">${escapeHTML(st.systemType)}</text>
+
+            <rect x="40" y="${H-98}" rx="999" ry="999" width="${sdOn ? 420 : (biOn ? 250 : 240)}" height="48"
+                  fill="${sdOn ? "rgba(37,99,235,.08)" : (biOn ? "rgba(22,163,74,.10)" : "rgba(37,99,235,.08)")}"
+                  stroke="${sdOn ? "rgba(37,99,235,.25)" : (biOn ? "rgba(22,163,74,.28)" : "rgba(37,99,235,.25)")}" />
+            <text x="${sdOn ? 250 : (biOn ? 165 : 160)}" y="${H-68}" text-anchor="middle" font-size="13" font-weight="1000"
+                  fill="${sdOn ? "#1e3a8a" : (biOn ? "#065f46" : "#1e3a8a")}">
+              ${sdOn ? "Star–Delta: KM1/KM2/KM3 + Timer + Interlock + OL" : (biOn ? "Bidirectional: ON (F/R)" : "Direction: Forward")}
+            </text>
+
+            <text x="40" y="92" text-anchor="start" font-size="12" font-weight="1000" fill="#64748b">${escapeHTML(phaseProtTag)}</text>
           </svg>
         `;
 
         const lines = [];
-        lines.push(`ملاحظة: الرسم مبسط (SLD) ويهدف لتوضيح التدفق العام. قيم تيار البدء حسب نمط البدء: ${st.startMode}.`);
+        lines.push(`ملاحظة: الرسم مبسط (SLD).`);
+        if (sdOn){
+          lines.push(`Star–Delta: KM1 (Line) + KM2 (Star) + KM3 (Delta) + Timer + Interlock + Overload.`);
+          lines.push(`Timer: Star=${fmt(st.sdStarTime,1)}s • Dead=${fmt(st.sdDeadTime,2)}s`);
+          lines.push(`Power Side Sequence: Start (KM1+KM2) → Transition → Run (KM1+KM3).`);
+          lines.push(`Interlock: Electrical (NC تبادلي) + Mechanical (موصى به).`);
+          lines.push(`Overload: OL Trip يوقف ملفات الكونتاكتورات ويستلزم Reset.`);
+        } else {
+          lines.push(`Starter: ${st.startMode}.`);
+        }
         if (st.capacitorOn && out.capNote) lines.push(out.capNote);
-        note.textContent = lines.join(" ");
+        note.textContent = lines.join("\n");
+      }
+
+      function updateSimulationVisibility(st, out, issues){
+        const wrap = $("simWrap");
+        if (!wrap) return;
+
+        const canSim = out.isSD && out.phaseFailureApplicable; // Star-Delta intended for 3PH
+        wrap.style.display = out.isSD ? "" : "none";
+
+        // disable sim buttons if input invalid OR not in SD
+        const invalidSimParams = issues.some(x => x.k === "sdStarTime" || x.k === "sdDeadTime");
+        const phaseProtEnabled = out.phaseFailureEnabled;
+
+        // apply params to sim
+        sim.setParams(
+          st.sdStarTime,
+          st.sdDeadTime,
+          phaseProtEnabled,
+          canSim && !invalidSimParams
+        );
+
+        // show notes in sim validation
+        if (invalidSimParams){
+          // errors already set in validate -> show those
+        }
       }
 
       // ----- Tabs -----
@@ -1353,18 +2020,46 @@
         $("sec-calc").classList.toggle("active", tab === "calc");
         $("sec-mat").classList.toggle("active", tab === "mat");
         $("sec-sld").classList.toggle("active", tab === "sld");
+
+        // pause simulation updates when not on calculate
+        simIsCalcVisible = (tab === "calc");
+
         updateAll(false);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
       // ----- Main update -----
+      let simIsCalcVisible = true;
+
       function updateAll(autoSave){
         clearErrors();
         const st = readStateFromUI();
+
+        // Phase Failure toggle availability
+        const is3ph = (st.systemType === "3PH/AC");
+        setSwitchDisabled($("togPF"), !is3ph);
+        if (!is3ph){
+          $("togPF").classList.remove("on");
+          $("togPF").setAttribute("aria-checked","false");
+          $("pfNote").textContent = "غير متاح في نظام 1PH.";
+        } else {
+          $("pfNote").textContent = "عند التفعيل: حماية فقد/عدم توازن/عكس الفاز في دائرة التحكم.";
+        }
+
+        // SD info highlight only when SD
+        const sdChosen = (st.startMode === "Star-Delta + Overload");
+        $("sdInfo").style.opacity = sdChosen ? "1" : ".55";
+
         const issues = validate(st);
 
-        if (issues.length){
-          issues.forEach(it=>setError(it.k, it.m));
+        // show sim field errors specifically
+        if (issues.some(x => x.k === "sdStarTime")) setError("sdStarTime", issues.find(x=>x.k==="sdStarTime").m);
+        if (issues.some(x => x.k === "sdDeadTime")) setError("sdDeadTime", issues.find(x=>x.k==="sdDeadTime").m);
+
+        // overall validation summary (ignore sim params as "overall"? keep overall)
+        const nonSimIssues = issues.filter(x => x.k !== "sdStarTime" && x.k !== "sdDeadTime");
+        if (nonSimIssues.length){
+          nonSimIssues.forEach(it=>setError(it.k, it.m));
           $("validationSummary").textContent = "يوجد مدخلات غير صحيحة — صحّح الحقول المعلّمة باللون الأحمر.";
         }else{
           $("validationSummary").textContent = "";
@@ -1373,16 +2068,27 @@
         let out = {};
         try{ out = compute(st); }catch(e){ out = {}; }
 
-        renderResults(st, out, issues);
+        renderResults(st, out, nonSimIssues);
         renderBOM(st, out);
         renderSLD(st, out);
+        updateSimulationVisibility(st, out, issues);
 
         if (autoSave){
           saveToLocal(st);
         }
       }
 
-      // ----- Wire events -----
+      // ----- Simulation ticker -----
+      let simTimer = null;
+      function ensureSimTicker(){
+        if (simTimer) return;
+        simTimer = setInterval(()=>{
+          if (!simIsCalcVisible) return;
+          sim.tick();
+        }, 100);
+      }
+
+      // ----- Events -----
       function wire(){
         document.querySelectorAll(".step-btn").forEach(btn=>{
           btn.addEventListener("click", ()=>setTab(btn.dataset.tab));
@@ -1390,14 +2096,14 @@
 
         const cap = $("togCap");
         const bi = $("togBi");
+        const pf = $("togPF");
 
         const toggleHandler = (el)=>()=>{
           setSwitch(el, !el.classList.contains("on"), true);
         };
-        cap.addEventListener("click", toggleHandler(cap));
-        bi.addEventListener("click", toggleHandler(bi));
 
-        [cap, bi].forEach(el=>{
+        [cap, bi, pf].forEach(el=>{
+          el.addEventListener("click", toggleHandler(el));
           el.addEventListener("keydown", (e)=>{
             if (e.key === "Enter" || e.key === " "){
               e.preventDefault();
@@ -1406,14 +2112,12 @@
           });
         });
 
-        const ids = ["voltage","systemType","powerVal","powerUnit","pf","eff","startMode","desiredPf","cableLen","instMethod","ambTemp","derating"];
+        const ids = ["voltage","systemType","powerVal","powerUnit","pf","eff","startMode","desiredPf","cableLen","instMethod","ambTemp","derating","sdStarTime","sdDeadTime"];
         ids.forEach(id=>{
           const el = $(id);
           const ev = (el.tagName === "SELECT") ? "change" : "input";
           el.addEventListener(ev, ()=>updateAll(true));
-          if (ev !== "change"){
-            el.addEventListener("change", ()=>updateAll(true));
-          }
+          if (ev !== "change") el.addEventListener("change", ()=>updateAll(true));
         });
 
         $("adv").addEventListener("toggle", ()=>updateAll(true));
@@ -1427,6 +2131,7 @@
           clearLocal();
           writeStateToUI(defaultState);
           updateAll(true);
+          sim.resetTrips();
           showToast("تمت إعادة الضبط ✅");
         });
 
@@ -1438,6 +2143,13 @@
         window.addEventListener("beforeunload", ()=>{
           try{ saveToLocal(readStateFromUI()); }catch(e){}
         });
+
+        // Simulation buttons
+        $("btnSimStart").addEventListener("click", ()=>sim.start());
+        $("btnSimStop").addEventListener("click", ()=>sim.stop());
+        $("btnTripOL").addEventListener("click", ()=>sim.tripOL());
+        $("btnTripPF").addEventListener("click", ()=>sim.tripPF());
+        $("btnResetTrips").addEventListener("click", ()=>sim.resetTrips());
       }
 
       function init(){
@@ -1445,6 +2157,8 @@
         writeStateToUI(st);
         wire();
         updateAll(true);
+        sim.render();
+        ensureSimTicker();
       }
 
       init();
